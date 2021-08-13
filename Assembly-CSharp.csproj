@@ -54,8 +54,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\InputHandler.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\ChangeColor.cs" />
      <Compile Include="Assets\Scripts\TopDownCharacterMover.cs" />
+     <Compile Include="Assets\Scripts\WheelController.cs" />
      <None Include="Assets\Course Library\_Source_Files\_LICENSE.txt" />
  <Reference Include="UnityEngine">
  <HintPath>E:/Program Files/Unity Path/2020.3.16f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

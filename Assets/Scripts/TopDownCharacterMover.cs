@@ -14,6 +14,8 @@ public class TopDownCharacterMover : MonoBehaviour
     
     
     public Rigidbody sphereRB;
+    public Rigidbody carRB;
+    
     public LayerMask groundLayer;
     [SerializeField] private bool isCarGrounded;
 
@@ -26,6 +28,7 @@ public class TopDownCharacterMover : MonoBehaviour
     {
         // Detach Sphere from car
         sphereRB.transform.parent = null;
+        carRB.transform.parent = null;
     }
     
     private void Update()
@@ -36,13 +39,15 @@ public class TopDownCharacterMover : MonoBehaviour
         RaycastHit hit;
         isCarGrounded = Physics.Raycast(transform.position, -transform.up, out hit, 1f, groundLayer);
         
-        
-        
         var targetVector = new Vector3(_input.InputVector.x, 0, _input.InputVector.y);
         var movementVector = MoveTowardTarget(targetVector);
 
         RotateTowardMovementVector(movementVector);
+    }
 
+    private void FixedUpdate()
+    {
+        carRB.MoveRotation(transform.rotation);
     }
 
     private Vector3 MoveTowardTarget(Vector3 targetVector)
