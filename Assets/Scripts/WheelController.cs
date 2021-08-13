@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class WheelController : MonoBehaviour
 {
+    private InputHandler _input;
+    private TopDownCharacterMover _RB;
+    private float CurrentWheelVelocity;
+    
     public GameObject[] wheelsToRotate;
     public TrailRenderer[] trails;
     public ParticleSystem smoke;
     
     public float rotationSpeed;
     private Animator anim;
+    
+    private void Awake()
+    {
+        _input = GetComponent<InputHandler>();
+        _RB = GetComponent<TopDownCharacterMover>();
+    }
     
     private void Start()
     {
@@ -20,13 +30,12 @@ public class WheelController : MonoBehaviour
     {
         float verticalAxis = Input.GetAxisRaw("Vertical");
         float horizontalAxis = Input.GetAxisRaw("Horizontal");
-
+        CurrentWheelVelocity = _RB.sphereRB.velocity.magnitude;
         foreach (var wheel in wheelsToRotate)
-        {
-            wheel.transform.Rotate(Time.deltaTime * verticalAxis * rotationSpeed,0,0, Space.Self);
-        }
+            wheel.transform.Rotate(Time.deltaTime * CurrentWheelVelocity * 
+                                   rotationSpeed,0,0, Space.Self);
 
-        if (horizontalAxis > 0)
+        /*if (horizontalAxis > 0)
         {
             //turning right
             anim.SetBool("goingLeft", false);
@@ -43,9 +52,9 @@ public class WheelController : MonoBehaviour
             //must be going straight
             anim.SetBool("goingRight", false);
             anim.SetBool("goingLeft", false);
-        }
+        }*/
 
-        if (horizontalAxis != 0)
+        if (horizontalAxis != 0 || verticalAxis != 0)
         {
             foreach (var trail in trails)
             {
