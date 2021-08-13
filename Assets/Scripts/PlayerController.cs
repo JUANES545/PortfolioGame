@@ -14,14 +14,14 @@ public class PlayerController : MonoBehaviour
 
     private float moveInput;
     private float turnInput;
-    private bool isCarGrounded;
+    [SerializeField] private bool isCarGrounded;
     
     private float normalDrag;
     public float modifiedDrag;
     
     public float alignToGroundTime;
     
-    void Start()
+    private void Start()
     {
         // Detach Sphere from car
         sphereRB.transform.parent = null;
@@ -53,8 +53,11 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, toRotateTo, alignToGroundTime * Time.deltaTime);
         
         // Calculate Movement Direction
-        moveInput *= moveInput > 0 ? fwdSpeed : revSpeed;
-        
+        if (moveInput > 0)
+            moveInput *= fwdSpeed;
+        else
+            moveInput *= revSpeed;
+
         // Calculate Drag
         sphereRB.drag = isCarGrounded ? normalDrag : modifiedDrag;
     }

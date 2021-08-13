@@ -8,61 +8,52 @@ public class TopDownCharacterMover : MonoBehaviour
 {
     private InputHandler _input;
 
-    [SerializeField]
-    private bool RotateTowardMouse;
-
-    [SerializeField]
-    private float MovementSpeed;
-    [SerializeField]
-    private float RotationSpeed;
-
-    [SerializeField]
-    private Camera Camera;
+    [SerializeField] private float MovementSpeed;
+    [SerializeField] private float RotationSpeed;
+    [SerializeField] private Camera Camera;
+    
+    
+    public Rigidbody sphereRB;
+    public LayerMask groundLayer;
+    [SerializeField] private bool isCarGrounded;
 
     private void Awake()
     {
         _input = GetComponent<InputHandler>();
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    private void Start()
     {
+        // Detach Sphere from car
+        sphereRB.transform.parent = null;
+    }
+    
+    private void Update()
+    {
+        // Set Cars Position to Our Sphere
+        transform.position = sphereRB.transform.position;
+        // Raycast to the ground and get normal to align car with it.
+        RaycastHit hit;
+        isCarGrounded = Physics.Raycast(transform.position, -transform.up, out hit, 1f, groundLayer);
+        
+        
         
         var targetVector = new Vector3(_input.InputVector.x, 0, _input.InputVector.y);
         var movementVector = MoveTowardTarget(targetVector);
 
-        if (!RotateTowardMouse)
-        {
-            RotateTowardMovementVector(movementVector);
-        }
-        if (RotateTowardMouse)
-        {
-            RotateFromMouseVector();
-        }
+        RotateTowardMovementVector(movementVector);
 
-    }
-
-    private void RotateFromMouseVector()
-    {
-        Ray ray = Camera.ScreenPointToRay(_input.MousePosition);
-
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance: 300f))
-        {
-            var target = hitInfo.point;
-            target.y = transform.position.y;
-            transform.LookAt(target);
-        }
     }
 
     private Vector3 MoveTowardTarget(Vector3 targetVector)
     {
         var speed = MovementSpeed * Time.deltaTime;
-        // transform.Translate(targetVector * (MovementSpeed * Time.deltaTime)); Demonstrate why this doesn't work
-        //transform.Translate(targetVector * (MovementSpeed * Time.deltaTime), Camera.gameObject.transform);
-
         targetVector = Quaternion.Euler(0, Camera.gameObject.transform.rotation.eulerAngles.y, 0) * targetVector;
-        var targetPosition = transform.position + targetVector * speed;
-        transform.position = targetPosition;
+
+        if (isCarGrounded)
+            sphereRB.AddForce(targetVector * speed, ForceMode.Acceleration); // Add Movement
+        else
+            sphereRB.AddForce(transform.up * -50f); // Add Gravity
         return targetVector;
     }
 

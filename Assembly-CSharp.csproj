@@ -52,10 +52,10 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\InputHandler.cs" />
-     <Compile Include="Assets\Scripts\TopDownCharacterMover.cs" />
+     <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\ChangeColor.cs" />
+     <Compile Include="Assets\Scripts\TopDownCharacterMover.cs" />
      <None Include="Assets\Course Library\_Source_Files\_LICENSE.txt" />
  <Reference Include="UnityEngine">
  <HintPath>E:/Program Files/Unity Path/2020.3.16f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -627,8 +627,14 @@
  <Reference Include="System.Xml.Serialization">
  <HintPath>E:/Program Files/Unity Path/2020.3.16f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
+ <Reference Include="Cinemachine">
+ <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.cinemachine.editor">
+ <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
