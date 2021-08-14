@@ -30,21 +30,21 @@ public class WheelController : MonoBehaviour
     
     private void Update()
     {
-        float verticalAxis = Input.GetAxisRaw("Vertical");
-        float horizontalAxis = Input.GetAxisRaw("Horizontal");
+        var verticalAxis = Input.GetAxisRaw("Vertical");
+        var horizontalAxis = Input.GetAxisRaw("Horizontal");
         CurrentWheelVelocity = _RB.sphereRB.velocity.magnitude;
         
         foreach (var wheel in wheelsToRotate)
             wheel.transform.Rotate(Time.deltaTime * CurrentWheelVelocity * 
                                    rotationSpeed,0,0, Space.Self);
 
-        if (horizontalAxis > 0)
+        if (_input.InputVector.x > 0 && _input.InputVector.y < 0)
         {
             //turning right
             anim.SetBool(GoingLeft, false);
             anim.SetBool(GoingRight, true);
         }
-        else if (horizontalAxis < 0)
+        else if (_input.InputVector.x < 0 && _input.InputVector.y > 0)
         {
             //turning left
             anim.SetBool(GoingRight, false);
