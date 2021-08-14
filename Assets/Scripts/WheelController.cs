@@ -61,8 +61,8 @@ public class WheelController : MonoBehaviour
                 trail.emitting = true;
             }
 
-            var emission = smoke.emission;
-            emission.rateOverTime = 50f;
+            //var emission = smoke.emission;
+            //emission.rateOverTime = 50f;
         }
         else
         {
@@ -71,8 +71,8 @@ public class WheelController : MonoBehaviour
                 trail.emitting = false;
             }
             
-            var emission = smoke.emission;
-            emission.rateOverTime = 0f;
+            //var emission = smoke.emission;
+            //emission.rateOverTime = 0f;
         }
     }
 }
