@@ -14,7 +14,9 @@ public class WheelController : MonoBehaviour
     
     public float rotationSpeed;
     private Animator anim;
-    
+    private static readonly int GoingLeft = Animator.StringToHash("goingLeft");
+    private static readonly int GoingRight = Animator.StringToHash("goingRight");
+
     private void Awake()
     {
         _input = GetComponent<InputHandler>();
@@ -31,28 +33,29 @@ public class WheelController : MonoBehaviour
         float verticalAxis = Input.GetAxisRaw("Vertical");
         float horizontalAxis = Input.GetAxisRaw("Horizontal");
         CurrentWheelVelocity = _RB.sphereRB.velocity.magnitude;
+        
         foreach (var wheel in wheelsToRotate)
             wheel.transform.Rotate(Time.deltaTime * CurrentWheelVelocity * 
                                    rotationSpeed,0,0, Space.Self);
 
-        /*if (horizontalAxis > 0)
+        if (horizontalAxis > 0)
         {
             //turning right
-            anim.SetBool("goingLeft", false);
-            anim.SetBool("goingRight", true);
+            anim.SetBool(GoingLeft, false);
+            anim.SetBool(GoingRight, true);
         }
         else if (horizontalAxis < 0)
         {
             //turning left
-            anim.SetBool("goingRight", false);
-            anim.SetBool("goingLeft", true);
+            anim.SetBool(GoingRight, false);
+            anim.SetBool(GoingLeft, true);
         }
         else
         {
             //must be going straight
-            anim.SetBool("goingRight", false);
-            anim.SetBool("goingLeft", false);
-        }*/
+            anim.SetBool(GoingRight, false);
+            anim.SetBool(GoingLeft, false);
+        }
 
         if (horizontalAxis != 0 || verticalAxis != 0)
         {
