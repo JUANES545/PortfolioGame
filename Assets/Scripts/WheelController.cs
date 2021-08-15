@@ -38,13 +38,13 @@ public class WheelController : MonoBehaviour
             wheel.transform.Rotate(Time.deltaTime * CurrentWheelVelocity * 
                                    rotationSpeed,0,0, Space.Self);
 
-        if (_input.InputVector.x > 0 && _input.InputVector.y < 0)
+        /*if (_input.InputVector.x > 0 && _input.InputVector.y > 0)
         {
             //turning right
             anim.SetBool(GoingLeft, false);
             anim.SetBool(GoingRight, true);
         }
-        else if (_input.InputVector.x < 0 && _input.InputVector.y > 0)
+        else if (_input.InputVector.x < 0 && _input.InputVector.y < 0)
         {
             //turning left
             anim.SetBool(GoingRight, false);
@@ -55,7 +55,7 @@ public class WheelController : MonoBehaviour
             //must be going straight
             anim.SetBool(GoingRight, false);
             anim.SetBool(GoingLeft, false);
-        }
+        }*/
 
         if (horizontalAxis != 0 || verticalAxis != 0)
         {

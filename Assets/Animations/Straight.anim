@@ -29,7 +29,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Free_Racing_Car_Yellow/Wheels/Meshes/FrontRightWheel
+    path: Free_Racing_Car_Yellow/Wheels/Meshes/FL_Container
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -45,7 +45,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Free_Racing_Car_Yellow/Wheels/Meshes/FrontLeftWheel
+    path: Free_Racing_Car_Yellow/Wheels/Meshes/FR_Container
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
@@ -58,14 +58,14 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 4079827632
+      path: 1443094407
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 4
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 633494388
+      path: 2860724298
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -109,7 +109,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Free_Racing_Car_Yellow/Wheels/Meshes/FrontRightWheel
+    path: Free_Racing_Car_Yellow/Wheels/Meshes/FL_Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -128,7 +128,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Free_Racing_Car_Yellow/Wheels/Meshes/FrontRightWheel
+    path: Free_Racing_Car_Yellow/Wheels/Meshes/FL_Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -147,7 +147,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Free_Racing_Car_Yellow/Wheels/Meshes/FrontRightWheel
+    path: Free_Racing_Car_Yellow/Wheels/Meshes/FL_Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -166,7 +166,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Free_Racing_Car_Yellow/Wheels/Meshes/FrontLeftWheel
+    path: Free_Racing_Car_Yellow/Wheels/Meshes/FR_Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -185,7 +185,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Free_Racing_Car_Yellow/Wheels/Meshes/FrontLeftWheel
+    path: Free_Racing_Car_Yellow/Wheels/Meshes/FR_Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -204,7 +204,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Free_Racing_Car_Yellow/Wheels/Meshes/FrontLeftWheel
+    path: Free_Racing_Car_Yellow/Wheels/Meshes/FR_Container
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -214,8 +214,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Free_Racing_Car_Yellow/Wheels/Meshes/FrontRightWheel
+    attribute: m_LocalEulerAngles.z
+    path: Free_Racing_Car_Yellow/Wheels/Meshes/FL_Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -225,17 +225,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Free_Racing_Car_Yellow/Wheels/Meshes/FrontRightWheel
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Free_Racing_Car_Yellow/Wheels/Meshes/FrontRightWheel
+    path: Free_Racing_Car_Yellow/Wheels/Meshes/FL_Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -245,7 +235,17 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Free_Racing_Car_Yellow/Wheels/Meshes/FrontLeftWheel
+    path: Free_Racing_Car_Yellow/Wheels/Meshes/FL_Container
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Free_Racing_Car_Yellow/Wheels/Meshes/FR_Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -255,7 +255,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Free_Racing_Car_Yellow/Wheels/Meshes/FrontLeftWheel
+    path: Free_Racing_Car_Yellow/Wheels/Meshes/FR_Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -265,7 +265,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Free_Racing_Car_Yellow/Wheels/Meshes/FrontLeftWheel
+    path: Free_Racing_Car_Yellow/Wheels/Meshes/FR_Container
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
