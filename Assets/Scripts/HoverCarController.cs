@@ -11,7 +11,7 @@ public class HoverCarController : MonoBehaviour {
 
     [SerializeField] private Camera Camera;
     [SerializeField] private Rigidbody sphereRB;
-    [SerializeField] private Rigidbody carRigidbody;
+    //[SerializeField] private Rigidbody carRigidbody;
     
     private float _vectorV;
     private float _vectorH;
