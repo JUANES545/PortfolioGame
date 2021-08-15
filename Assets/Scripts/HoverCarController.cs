@@ -4,46 +4,45 @@ using System.Collections;
 
 public class HoverCarController : MonoBehaviour {
 
-    public float speed = 90f;
-    public float turnSpeed = 5f;
-    public float hoverForce = 65f;
-    public float hoverHeight = 3.5f;
-    private float powerInput;
-    private float turnInput;
-    public Rigidbody carRigidbody;
-
-
-    private void Awake () 
-    {
-        carRigidbody = GetComponent <Rigidbody>();
-    }
-
+    [SerializeField] private float speed = 90f;
+    [SerializeField] private float hoverForce = 65f;
+    [SerializeField] private float hoverHeight = 3.5f;
+    private float _vectorV;
+    private float _vectorH;
+    
+    [SerializeField] private float RotationSpeed;
+    [SerializeField] private Camera Camera;
+    [SerializeField] private Rigidbody sphereRB;
+    [SerializeField] private Rigidbody carRigidbody;
+    
     private void Start()
     {
+        sphereRB.transform.parent = null;
         carRigidbody.transform.parent = null;
     }
 
     private void Update () 
     {
-        powerInput = Input.GetAxis ("Vertical");
-        turnInput = Input.GetAxis ("Horizontal");
+        _vectorV = Input.GetAxis ("Vertical");
+        _vectorH = Input.GetAxis ("Horizontal");
     }
 
     private void FixedUpdate()
     {
-        transform.position = carRigidbody.transform.position;
-        Ray ray = new Ray (transform.position, -transform.up);
-        RaycastHit hit;
+        // Set Cars Position to Our Sphere
+        transform.position = sphereRB.transform.position;
+        
+        var ray = new Ray (transform.position, -transform.up);
 
-        if (Physics.Raycast(ray, out hit, hoverHeight))
+        if (Physics.Raycast(ray, out var hit, hoverHeight))
         {
-            float proportionalHeight = (hoverHeight - hit.distance) / hoverHeight;
-            Vector3 appliedHoverForce = Vector3.up * proportionalHeight * hoverForce;
-            carRigidbody.AddForce(appliedHoverForce, ForceMode.Acceleration);
+            var proportionalHeight = (hoverHeight - hit.distance) / hoverHeight;
+            var appliedHoverForce = Vector3.up * proportionalHeight * hoverForce;
+            sphereRB.AddForce(appliedHoverForce, ForceMode.Acceleration);
         }
 
-        carRigidbody.AddRelativeForce(0f, 0f, powerInput * speed);
-        carRigidbody.AddRelativeTorque(0f, turnInput * turnSpeed, 0f);
+        sphereRB.AddRelativeForce(0f, 0f, _vectorV * speed);
+        sphereRB.AddRelativeForce(_vectorH * speed, 0, 0);
 
     }
 }
