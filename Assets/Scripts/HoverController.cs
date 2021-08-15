@@ -2,11 +2,16 @@
 using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(InputHandler))]
 public class HoverController : MonoBehaviour
 {
+    private InputHandler _input;
     [SerializeField] private float GoUpForce = 12500f;
     [SerializeField] private float ForwardForce = 20000f;
     [SerializeField] private float RotationTorque = 10000f;
+    
+    [SerializeField] private float rotationSpeed = 2f;
+    
     [SerializeField] private Transform[] RaycastHelpers;
     [SerializeField] private Transform CenterRaycastHelper;
     [SerializeField] private float HeightFromGround = 2f;
@@ -14,13 +19,18 @@ public class HoverController : MonoBehaviour
     [SerializeField] private bool BlockAirControl;
 
     [SerializeField] private LayerMask GroundLayer;
-
+    [SerializeField] private Camera Camera;
+    
     private float horizontal;
     private float vertical;
+    private bool grounded;
+    
+    private Rigidbody hoverRB;
 
-    Rigidbody hoverRB;
-
-    bool grounded;
+    private void Awake()
+    {
+        _input = GetComponent<InputHandler>();
+    }
 
     private void Start ()
     {
@@ -29,16 +39,18 @@ public class HoverController : MonoBehaviour
 
     private void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        checkGrounded();
+        heightUp();
     }
 
     private void FixedUpdate ()
     {
-        checkGrounded();
-        heightUp();
         
-        InputMovement(vertical, horizontal);
+        var targetVector = new Vector3(_input.InputVector.x, 0, _input.InputVector.y);
+        
+        var movementVector = MoveTowardTarget(targetVector);
+        
+        RotateTowardMovementVector(movementVector);
 	}
 
     void checkGrounded()
@@ -66,10 +78,22 @@ public class HoverController : MonoBehaviour
         }
     }
 
-    private void InputMovement(float forward, float side)
+    private Vector3 MoveTowardTarget(Vector3 targetVector)
     {
-        if (!grounded && BlockAirControl) return;
-        hoverRB.AddRelativeForce(Vector3.forward * forward * ForwardForce, ForceMode.Force);
-        hoverRB.AddRelativeTorque(Vector3.up * RotationTorque * side * (forward == 0 ? 1f : Mathf.Sign(forward)), ForceMode.Force);
+        targetVector = Quaternion.Euler(0, 
+            Camera.gameObject.transform.rotation.eulerAngles.y, 0) * targetVector;
+
+        if (grounded || !BlockAirControl)
+        {
+            hoverRB.AddForce(targetVector * ForwardForce, ForceMode.Acceleration);
+        }
+        return targetVector;
+    }
+    
+    private void RotateTowardMovementVector(Vector3 movementDirection)
+    {
+        if(movementDirection.magnitude == 0) { return; }
+        var rotation = Quaternion.LookRotation(movementDirection);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
     }
 }

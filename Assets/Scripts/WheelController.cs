@@ -32,40 +32,19 @@ public class WheelController : MonoBehaviour
     {
         var verticalAxis = Input.GetAxisRaw("Vertical");
         var horizontalAxis = Input.GetAxisRaw("Horizontal");
-        CurrentWheelVelocity = _RB.sphereRB.velocity.magnitude;
+        //CurrentWheelVelocity = _RB.sphereRB.velocity.magnitude;
         
         foreach (var wheel in wheelsToRotate)
             wheel.transform.Rotate(Time.deltaTime * CurrentWheelVelocity * 
                                    rotationSpeed,0,0, Space.Self);
-
-        /*if (_input.InputVector.x > 0 && _input.InputVector.y > 0)
-        {
-            //turning right
-            anim.SetBool(GoingLeft, false);
-            anim.SetBool(GoingRight, true);
-        }
-        else if (_input.InputVector.x < 0 && _input.InputVector.y < 0)
-        {
-            //turning left
-            anim.SetBool(GoingRight, false);
-            anim.SetBool(GoingLeft, true);
-        }
-        else
-        {
-            //must be going straight
-            anim.SetBool(GoingRight, false);
-            anim.SetBool(GoingLeft, false);
-        }*/
+        
 
         if (horizontalAxis != 0 || verticalAxis != 0)
         {
             foreach (var trail in trails)
             {
-                trail.emitting = true;
+                trail.emitting = true; 
             }
-
-            //var emission = smoke.emission;
-            //emission.rateOverTime = 50f;
         }
         else
         {
@@ -73,9 +52,6 @@ public class WheelController : MonoBehaviour
             {
                 trail.emitting = false;
             }
-            
-            //var emission = smoke.emission;
-            //emission.rateOverTime = 0f;
         }
     }
 }
