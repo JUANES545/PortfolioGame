@@ -1,7 +1,8 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
-public class HoverMotor : MonoBehaviour {
+public class HoverCarController : MonoBehaviour {
 
     public float speed = 90f;
     public float turnSpeed = 5f;
@@ -9,12 +10,17 @@ public class HoverMotor : MonoBehaviour {
     public float hoverHeight = 3.5f;
     private float powerInput;
     private float turnInput;
-    private Rigidbody carRigidbody;
+    public Rigidbody carRigidbody;
 
 
     private void Awake () 
     {
         carRigidbody = GetComponent <Rigidbody>();
+    }
+
+    private void Start()
+    {
+        carRigidbody.transform.parent = null;
     }
 
     private void Update () 
@@ -25,6 +31,7 @@ public class HoverMotor : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        transform.position = carRigidbody.transform.position;
         Ray ray = new Ray (transform.position, -transform.up);
         RaycastHit hit;
 
