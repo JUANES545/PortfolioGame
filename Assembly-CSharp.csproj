@@ -208,9 +208,11 @@
      <Compile Include="Assets\UniGLTF\UniJSON\Scripts\Json\SimpleJSON.cs" />
      <Compile Include="Assets\UniGLTF\Core\Scripts\IO\NodeImporter.cs" />
      <Compile Include="Assets\UniGLTF\UniJSON\Scripts\StringSegment.cs" />
+     <Compile Include="Assets\Prefabs\Simple Helvetica\SimpleHelvetica.cs" />
      <None Include="Assets\Prefabs\Course Library\_Source_Files\_LICENSE.txt" />
      <None Include="Assets\UniGLTF\Resources\Shaders\NormalMapDecoder.shader" />
      <None Include="Assets\Prefabs\HoverController\ReadMe.txt" />
+     <None Include="Assets\Prefabs\Simple Helvetica\readme.txt" />
      <None Include="Assets\UniGLTF\UniUnlit\Resources\UniUnlit.shader" />
      <None Include="Assets\UniGLTF\Resources\Shaders\NormalMapEncoder.shader" />
      <None Include="Assets\UniGLTF\Resources\Shaders\StandardVColor.shader" />
