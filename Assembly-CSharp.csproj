@@ -206,9 +206,9 @@
      <Compile Include="Assets\UniGLTF\Core\Scripts\IO\MeshImporter.cs" />
      <Compile Include="Assets\UniGLTF\Core\Scripts\UniGLTFVersion_partial.cs" />
      <Compile Include="Assets\Prefabs\Simple Helvetica\SimpleHelvetica.cs" />
+     <Compile Include="Assets\Scripts\SpawnerController.cs" />
      <Compile Include="Assets\UniGLTF\UniHumanoid\PoseModifier\IPoseModifier.cs" />
      <Compile Include="Assets\UniGLTF\UniJSON\Scripts\JsonSchemaValidator\JsonArrayValidator.cs" />
-     <Compile Include="Assets\Scripts\SpawnerController.cs" />
      <None Include="Assets\Prefabs\Course Library\_Source_Files\_LICENSE.txt" />
      <None Include="Assets\UniGLTF\Resources\Shaders\NormalMapDecoder.shader" />
      <None Include="Assets\Prefabs\HoverController\ReadMe.txt" />

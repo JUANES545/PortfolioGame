@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class SpawnerController : MonoBehaviour
 {
-    // [SerializeField] private Transform[] spawnerLocations;
-    // [SerializeField] private GameObject[] prefabsToSpawn;
-    // [SerializeField] private GameObject[] prefabsToClone;
+    [SerializeField] private Transform spawnerLocations;
+    [SerializeField] private GameObject[] prefabsToSpawn;
+    [SerializeField] private GameObject[] prefabsToClone;
     
     [SerializeField] private bool playerDetected;
 
@@ -18,14 +18,21 @@ public class SpawnerController : MonoBehaviour
     private void Start()
     {
         //prefabsToClone = new GameObject[prefabsToSpawn.Length];
+        //prefabsToClone = FindObjectOfType<SpawnerController>()
         //Spawn();
     }
 
-    /*private void Spawn()
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+            ReSpawnPrefab();
+    }
+
+    private void Spawn()
     {
         for (var i = 0; i < prefabsToSpawn.Length; i++)
         {
-            prefabsToClone[i] = Instantiate(prefabsToSpawn[i], spawnerLocations[i].transform.position,
+            prefabsToClone[i] = Instantiate(prefabsToSpawn[i], spawnerLocations.transform.position,
                 Quaternion.Euler(0, 0, 0) )as GameObject;
         }
     }
@@ -33,9 +40,9 @@ public class SpawnerController : MonoBehaviour
     private void DestroyClonedGameObjects()
     {
         // Destroy all cloned game objects
-        for (var i = 0; i < prefabsToClone.Length; i++)
+        foreach (var t in prefabsToClone)
         {
-            Destroy(prefabsToClone[i]);
+            Destroy(t);
         }
     }
 
@@ -46,23 +53,29 @@ public class SpawnerController : MonoBehaviour
         
         // Spawn all game objects
         Spawn();
-    }*/
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Doggy");
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            //playerDetected = true;
-            Debug.Log("wolfy");
+            playerDetected = true;
         }
     }
 
-    private void OnTriggerExit(Collider other) //DangerZone detection
+    private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             playerDetected = false;
+        }
+    }
+
+    private void ReSpawnPrefab()
+    {
+        if (playerDetected)
+        {
+            Respawn();
         }
     }
     

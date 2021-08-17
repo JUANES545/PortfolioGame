@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using UnityEditor.SceneManagement;
 
 [RequireComponent(typeof(InputHandler))]
 public class HoverController : MonoBehaviour
@@ -21,6 +22,7 @@ public class HoverController : MonoBehaviour
     [SerializeField] private LayerMask GroundLayer;
     [SerializeField] private Camera Camera;
     
+
     private float horizontal;
     private float vertical;
     private bool grounded;
@@ -35,7 +37,7 @@ public class HoverController : MonoBehaviour
     private void Start ()
     {
         hoverRB = GetComponent<Rigidbody>();
-	}
+    }
 
     private void Update()
     {
