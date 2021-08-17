@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Prototype 1.unity
+- path: C:/Users/juane/Downloads/UnityWebglResponsiveTemplate-master/Assets/WebGLTemplates/Example/ExampleScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
