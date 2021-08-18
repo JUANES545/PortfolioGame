@@ -8,8 +8,20 @@ public class SpawnerController : MonoBehaviour
     [SerializeField] private Transform spawnerLocations;
     [SerializeField] private GameObject prefabsToSpawn;
     [SerializeField] private GameObject prefabsToClone;
-    
     [SerializeField] private bool playerDetected;
+    
+    [SerializeField] private Animator _animator;
+    private static readonly int Platform = Animator.StringToHash("Platform");
+
+    private void Awake()
+    {
+        //_animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        _animator.SetBool(Platform, false);
+    }
 
     private void Update()
     {
@@ -19,18 +31,16 @@ public class SpawnerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerDetected = true;
-        }
+        if (!other.CompareTag("Player")) return;
+        playerDetected = true;
+        _animator.SetBool(Platform, true);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerDetected = false;
-        }
+        if (!other.CompareTag("Player")) return;
+        playerDetected = false;
+        _animator.SetBool(Platform, false);
     }
 
     private void ReSpawnPrefab()
