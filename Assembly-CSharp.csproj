@@ -636,6 +636,9 @@
  <Reference Include="com.unity.cinemachine.editor">
  <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Postprocessing.Runtime">
+ <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
@@ -651,11 +654,11 @@
  <Reference Include="Unity.TextMeshPro">
  <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Postprocessing.Editor">
+ <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.PlasticSCM.Editor">
- <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
  <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
@@ -663,11 +666,8 @@
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
- <Reference Include="Unity.Postprocessing.Editor">
- <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Postprocessing.Runtime">
- <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+ <Reference Include="Unity.PlasticSCM.Editor">
+ <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
