@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WheelController : MonoBehaviour
 {
-    private InputHandler _input;
-    private TopDownCharacterMover _RB;
+    //private InputHandler _input;
+    //private TopDownCharacterMover _RB;
     private float CurrentWheelVelocity;
     
     public GameObject[] wheelsToRotate;
@@ -19,8 +19,8 @@ public class WheelController : MonoBehaviour
 
     private void Awake()
     {
-        _input = GetComponent<InputHandler>();
-        _RB = GetComponent<TopDownCharacterMover>();
+        //_input = GetComponent<InputHandler>();
+        //_RB = GetComponent<TopDownCharacterMover>();
     }
     
     private void Start()
