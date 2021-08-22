@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8477851}
   - component: {fileID: 8477852}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 593282081}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1089994413}
   - component: {fileID: 1089994414}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spot Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1447325810}
   - component: {fileID: 1447325811}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1708953783}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2024057350}
   - component: {fileID: 2024057351}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -517,7 +517,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7559936837604054070}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 2220723399873569409}
   - component: {fileID: 4877301804997610662}
   - component: {fileID: 2288890654840824895}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ColliderBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,7 +648,7 @@ GameObject:
   - component: {fileID: 7804862892072163836}
   - component: {fileID: 525797391568874232}
   - component: {fileID: 8322111025215925576}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ColliderFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -749,6 +749,19 @@ MonoBehaviour:
   - {fileID: 2024057351}
   smoke: {fileID: 0}
   rotationSpeed: 0
+--- !u!65 &2033360403
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7152704819624980021}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4238362, y: 1.182251, z: 4.4285975}
+  m_Center: {x: -0.005695343, y: 0.7859576, z: -0.15377426}
 --- !u!1 &7396330446413730785
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,7 +774,7 @@ GameObject:
   - component: {fileID: 3057088127886233923}
   - component: {fileID: 581155308360742893}
   - component: {fileID: 5739333639852267063}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ColliderBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -851,17 +864,97 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1000010183076202, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010491549506, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010719196114, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010828766672, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011134638226, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011259931850, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011835791962, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011899660784, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011904802304, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012061496480, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012629697606, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012684620022, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1000012771031076, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
       propertyPath: m_Name
       value: ColliderBottom
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013036413028, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013537981212, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013659623804, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013732919774, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013807730044, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013909848856, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1000014222773766, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
       propertyPath: m_Name
       value: Hover Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1000014222773766, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000014222773766, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000014259541954, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4000012052871962, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
       propertyPath: m_RootOrder
@@ -881,15 +974,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012052871962, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000012052871962, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.9
+      value: 3.7
       objectReference: {fileID: 0}
     - target: {fileID: 4000012052871962, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 52.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000012052871962, guid: f78f045e9ae3d494ba18a734cfdc1d07, type: 3}
       propertyPath: m_LocalRotation.w
