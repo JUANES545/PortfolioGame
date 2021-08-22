@@ -19,13 +19,14 @@ public class HoverController : MonoBehaviour
 
     private float horizontal;
     private float vertical;
+    public GameObject c;
 
     bool grounded = false;
 
-	void Start ()
+    private void Start()
     {
         hoverBody = GetComponent<Rigidbody>();
-	}
+    }
 
     private void Update()
     {
@@ -33,15 +34,16 @@ public class HoverController : MonoBehaviour
         vertical = Input.GetAxis("Vertical");
     }
 
-    void FixedUpdate ()
+    private void FixedUpdate()
     {
         checkGrounded();
         heightUp();
+        AlwaysDown();
         var targetVector = new Vector3(horizontal, 0, vertical);
-        
+
         InputMovement(vertical, horizontal, targetVector);
-        alwaysDown();
-	}
+
+    }
 
     void checkGrounded()
     {
@@ -65,13 +67,14 @@ public class HoverController : MonoBehaviour
             Ray ray = new Ray(raycastHelper.position, -raycastHelper.up);
             RaycastHit hitInfo;
 
-            if(Physics.Raycast(ray, out hitInfo, HeightFromGround, GroundLayer))
+            if (Physics.Raycast(ray, out hitInfo, HeightFromGround, GroundLayer))
             {
                 float distance = Vector3.Distance(raycastHelper.position, hitInfo.point);
 
-                if(distance < HeightFromGround)
+                if (distance < HeightFromGround)
                 {
-                    hoverBody.AddForceAtPosition(raycastHelper.up * GoUpForce * (1f - distance / HeightFromGround), raycastHelper.position, ForceMode.Force);
+                    hoverBody.AddForceAtPosition(raycastHelper.up * GoUpForce * (1f - distance / HeightFromGround),
+                        raycastHelper.position, ForceMode.Force);
                 }
             }
         }
@@ -88,34 +91,15 @@ public class HoverController : MonoBehaviour
         }
     }
 
-    private void alwaysDown()
+    private void AlwaysDown()
     {
-        if (gameObject.transform.rotation.x > 34 || gameObject.transform.rotation.x < -34)
+        Debug.Log("Doggy");
+        Debug.Log(c.transform.localRotation.eulerAngles.x);
+        //Debug.Log("Doggy");
+        /*if (gameObject.transform.localRotation.eulerAngles.x > 34 || gameObject.transform.localRotation.eulerAngles.x < -34)
         {
             Debug.Log("doggy");
-            gameObject.transform.Rotate(0,180,0);
-        }
+            //gameObject.transform.Rotate(0,180,0);
+        }*/
     }
 }
-
-
-/*
-    private Vector3 MoveTowardTarget(Vector3 targetVector)
-    {
-        //targetVector = Quaternion.Euler(0, Camera.gameObject.transform.rotation.eulerAngles.y, 0) * targetVector;
-
-        if (grounded || !BlockAirControl)
-        {
-            //hoverRB.AddForce(targetVector * ForwardForce, ForceMode.Acceleration);
-            hoverRB.AddRelativeForce(Vector3.forward * targetVector.z * ForwardForce, ForceMode.Force);
-        }
-        return targetVector;
-    }
-    
-    private void RotateTowardMovementVector(Vector3 movementDirection)
-    {
-        if(movementDirection.magnitude == 0) { return; }
-        var rotation = Quaternion.LookRotation(movementDirection);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
-    }
-*/

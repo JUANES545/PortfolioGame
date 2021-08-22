@@ -8,7 +8,6 @@ public class CollisionEffects : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Doggy");
         Instantiate(hitEffectPrefab, other.GetContact(0).point, Quaternion.identity);
     }
 }
