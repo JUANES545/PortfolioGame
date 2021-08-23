@@ -24,7 +24,7 @@ public class HoverController : MonoBehaviour
     [SerializeField] private float eulerAngY;
     [SerializeField] private float eulerAngZ;
     [SerializeField] private bool saveZone;
-    [SerializeField] private bool driff;
+    [SerializeField] private bool handBreak;
     [SerializeField] private Vector3 to3;
     
     private float inputX;
@@ -43,8 +43,6 @@ public class HoverController : MonoBehaviour
 
     private void Update()
     {
-        //horizontal = Input.GetAxis("Horizontal");
-        //vertical = Input.GetAxis("Vertical");
         CheckGrounded();
         HeightUp();
     }
@@ -52,11 +50,13 @@ public class HoverController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var targetVector = new Vector3(horizontal, 0, vertical);
-        //AlwaysDown(eulerAngX, targetVector);
+        /*     Experimental
+         var targetVector = new Vector3(horizontal, 0, vertical);
+        AlwaysDown(eulerAngX, targetVector);
         
-        //AlwaysDown(eulerAngX, eulerAngY, eulerAngZ, targetVector);
-        //InputMovement(vertical, horizontal, targetVector);
+        AlwaysDown(eulerAngX, eulerAngY, eulerAngZ, targetVector);
+        InputMovement(vertical, horizontal, targetVector);
+        */
         InputMovement(inputY, inputX);
 
     }
@@ -101,7 +101,6 @@ public class HoverController : MonoBehaviour
             Vector3.up * (RotationTorque * side * (forward == 0 ? 1f : Mathf.Sign(forward))), ForceMode.Force);
         if (grounded || !BlockAirControl)
         {
-            //hoverBody.AddRelativeForce(Vector3.forward * forward * ForwardForce, ForceMode.Force);
             hoverBody.AddRelativeForce(Vector3.forward * forward * turboFactor, ForceMode.Force);
             
         }
@@ -123,7 +122,7 @@ public class HoverController : MonoBehaviour
         }
         
         //to3 = Vector3.Scale(transform.eulerAngles, new Vector3(0,1,1));
-    }
+    } //Experimental
     
     public void Move(InputAction.CallbackContext context){
         inputX = context.ReadValue<Vector2>().x;
@@ -147,10 +146,10 @@ public class HoverController : MonoBehaviour
     {
         if (context.performed && grounded)
         {
-            driff = true;
+            handBreak = true;
         }else if (context.canceled && grounded)
         {
-            driff = false;
+            handBreak = false;
         }
     }
 

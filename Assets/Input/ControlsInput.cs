@@ -27,7 +27,7 @@ public class @ControlsInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Driff"",
+                    ""name"": ""handBreak"",
                     ""type"": ""Button"",
                     ""id"": ""ed33b385-fed4-448b-b5ee-36b61f15b0d7"",
                     ""expectedControlType"": ""Button"",
@@ -161,7 +161,7 @@ public class @ControlsInput : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Driff"",
+                    ""action"": ""handBreak"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -172,7 +172,7 @@ public class @ControlsInput : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Driff"",
+                    ""action"": ""handBreak"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -773,7 +773,7 @@ public class @ControlsInput : IInputActionCollection, IDisposable
         // InGame
         m_InGame = asset.FindActionMap("InGame", throwIfNotFound: true);
         m_InGame_Move = m_InGame.FindAction("Move", throwIfNotFound: true);
-        m_InGame_Driff = m_InGame.FindAction("Driff", throwIfNotFound: true);
+        m_InGame_handBreak = m_InGame.FindAction("handBreak", throwIfNotFound: true);
         m_InGame_Turbo = m_InGame.FindAction("Turbo", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -837,14 +837,14 @@ public class @ControlsInput : IInputActionCollection, IDisposable
     private readonly InputActionMap m_InGame;
     private IInGameActions m_InGameActionsCallbackInterface;
     private readonly InputAction m_InGame_Move;
-    private readonly InputAction m_InGame_Driff;
+    private readonly InputAction m_InGame_handBreak;
     private readonly InputAction m_InGame_Turbo;
     public struct InGameActions
     {
         private @ControlsInput m_Wrapper;
         public InGameActions(@ControlsInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_InGame_Move;
-        public InputAction @Driff => m_Wrapper.m_InGame_Driff;
+        public InputAction @handBreak => m_Wrapper.m_InGame_handBreak;
         public InputAction @Turbo => m_Wrapper.m_InGame_Turbo;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
@@ -858,9 +858,9 @@ public class @ControlsInput : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
-                @Driff.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnDriff;
-                @Driff.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnDriff;
-                @Driff.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnDriff;
+                @handBreak.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnHandBreak;
+                @handBreak.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnHandBreak;
+                @handBreak.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnHandBreak;
                 @Turbo.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnTurbo;
                 @Turbo.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnTurbo;
                 @Turbo.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnTurbo;
@@ -871,9 +871,9 @@ public class @ControlsInput : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Driff.started += instance.OnDriff;
-                @Driff.performed += instance.OnDriff;
-                @Driff.canceled += instance.OnDriff;
+                @handBreak.started += instance.OnHandBreak;
+                @handBreak.performed += instance.OnHandBreak;
+                @handBreak.canceled += instance.OnHandBreak;
                 @Turbo.started += instance.OnTurbo;
                 @Turbo.performed += instance.OnTurbo;
                 @Turbo.canceled += instance.OnTurbo;
@@ -1034,7 +1034,7 @@ public class @ControlsInput : IInputActionCollection, IDisposable
     public interface IInGameActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnDriff(InputAction.CallbackContext context);
+        void OnHandBreak(InputAction.CallbackContext context);
         void OnTurbo(InputAction.CallbackContext context);
     }
     public interface IUIActions

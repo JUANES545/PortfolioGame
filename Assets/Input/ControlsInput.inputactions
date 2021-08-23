@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Driff",
+                    "name": "handBreak",
                     "type": "Button",
                     "id": "ed33b385-fed4-448b-b5ee-36b61f15b0d7",
                     "expectedControlType": "Button",
@@ -148,7 +148,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Driff",
+                    "action": "handBreak",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -159,7 +159,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Driff",
+                    "action": "handBreak",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
