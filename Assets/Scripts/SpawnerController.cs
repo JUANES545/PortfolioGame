@@ -13,6 +13,7 @@ public class SpawnerController : MonoBehaviour
     [SerializeField] private Animator _animator;
     private static readonly int Platform = Animator.StringToHash("Platform");
 
+
     private void Awake()
     {
         //_animator = GetComponent<Animator>();

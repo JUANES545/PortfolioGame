@@ -19,7 +19,12 @@ public class HoverController : MonoBehaviour
 
     private float horizontal;
     private float vertical;
-    public GameObject c;
+    [SerializeField] private float eulerAngX;
+    [SerializeField] private float eulerAngY;
+    [SerializeField] private float eulerAngZ;
+    [SerializeField] private bool saveZone;
+    [SerializeField] private float degrees = 180;
+    [SerializeField] private Vector3 to3;
 
     bool grounded = false;
 
@@ -32,15 +37,17 @@ public class HoverController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+        checkGrounded();
+        heightUp();
     }
+    
 
     private void FixedUpdate()
     {
-        checkGrounded();
-        heightUp();
-        AlwaysDown();
         var targetVector = new Vector3(horizontal, 0, vertical);
-
+        //AlwaysDown(eulerAngX, targetVector);
+        
+        //AlwaysDown(eulerAngX, eulerAngY, eulerAngZ, targetVector);
         InputMovement(vertical, horizontal, targetVector);
 
     }
@@ -53,10 +60,15 @@ public class HoverController : MonoBehaviour
         if (Physics.Raycast(ray, out hitInfo, GroundedThreshold, GroundLayer))
         {
             grounded = true;
+            hoverBody.drag = 1.5f;
+            if (Input.GetKeyDown(KeyCode.Space))
+                hoverBody.drag = 2.5f;
+
         }
         else
         {
             grounded = false;
+            hoverBody.drag = 0.2f;
         }
     }
 
@@ -82,24 +94,34 @@ public class HoverController : MonoBehaviour
 
     private void InputMovement(float forward, float side, Vector3 targetVector)
     {
+        hoverBody.AddRelativeTorque(
+            Vector3.up * (RotationTorque * side * (forward == 0 ? 1f : Mathf.Sign(forward))), ForceMode.Force);
         if (grounded || !BlockAirControl)
         {
             //hoverBody.AddRelativeForce(Vector3.forward * forward * ForwardForce, ForceMode.Force);
-            hoverBody.AddRelativeForce(Vector3.forward * forward * ForwardForce, ForceMode.Acceleration);
-            hoverBody.AddRelativeTorque(
-                Vector3.up * (RotationTorque * side * (forward == 0 ? 1f : Mathf.Sign(forward))), ForceMode.Force);
+            hoverBody.AddRelativeForce(Vector3.forward * forward * ForwardForce, ForceMode.Force);
+            
         }
     }
 
-    private void AlwaysDown()
+    private void AlwaysDown(float eulerAngX, Vector3 targetVector)
     {
-        Debug.Log("Doggy");
-        Debug.Log(c.transform.localRotation.eulerAngles.x);
-        //Debug.Log("Doggy");
-        /*if (gameObject.transform.localRotation.eulerAngles.x > 34 || gameObject.transform.localRotation.eulerAngles.x < -34)
+        if (eulerAngX > 300 || eulerAngX == 0  || eulerAngX < 37)
         {
-            Debug.Log("doggy");
-            //gameObject.transform.Rotate(0,180,0);
-        }*/
+            saveZone = true;
+            
+        }
+        else
+        {
+            saveZone = false;
+            to3 = Vector3.Scale(transform.localEulerAngles, new Vector3(0,1,0));
+            gameObject.transform.Rotate(to3);            
+            //to3 = transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, new Vector3(0, 1, 1), Time.deltaTime);
+        }
+        
+        //to3 = Vector3.Scale(transform.eulerAngles, new Vector3(0,1,1));
+        
+        
+        
     }
 }
