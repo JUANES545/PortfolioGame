@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WheelController : MonoBehaviour
 {
-    private InputHandler _input;
+    /*private InputHandler _input;
     private TopDownCharacterMover _RB;
     private float CurrentWheelVelocity;
     
@@ -53,5 +53,5 @@ public class WheelController : MonoBehaviour
                 trail.emitting = false;
             }
         }
-    }
+    }*/
 }

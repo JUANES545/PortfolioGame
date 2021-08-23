@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 public class HoverController : MonoBehaviour
 {
@@ -23,22 +24,29 @@ public class HoverController : MonoBehaviour
     [SerializeField] private float eulerAngY;
     [SerializeField] private float eulerAngZ;
     [SerializeField] private bool saveZone;
-    [SerializeField] private float degrees = 180;
+    [SerializeField] private bool driff;
     [SerializeField] private Vector3 to3;
+    
+    private float inputX;
+    private float inputY;
+    
+    [SerializeField] private const float TurboForce = 2.5f;
+    public float turboFactor;
 
     bool grounded = false;
 
     private void Start()
     {
         hoverBody = GetComponent<Rigidbody>();
+        turboFactor = ForwardForce;
     }
 
     private void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
-        checkGrounded();
-        heightUp();
+        //horizontal = Input.GetAxis("Horizontal");
+        //vertical = Input.GetAxis("Vertical");
+        CheckGrounded();
+        HeightUp();
     }
     
 
@@ -48,22 +56,20 @@ public class HoverController : MonoBehaviour
         //AlwaysDown(eulerAngX, targetVector);
         
         //AlwaysDown(eulerAngX, eulerAngY, eulerAngZ, targetVector);
-        InputMovement(vertical, horizontal, targetVector);
+        //InputMovement(vertical, horizontal, targetVector);
+        InputMovement(inputY, inputX);
 
     }
 
-    void checkGrounded()
+    private void CheckGrounded()
     {
-        Ray ray = new Ray(CenterRaycastHelper.position, -CenterRaycastHelper.up);
+        var ray = new Ray(CenterRaycastHelper.position, -CenterRaycastHelper.up);
         RaycastHit hitInfo;
 
         if (Physics.Raycast(ray, out hitInfo, GroundedThreshold, GroundLayer))
         {
             grounded = true;
             hoverBody.drag = 1.5f;
-            if (Input.GetKeyDown(KeyCode.Space))
-                hoverBody.drag = 2.5f;
-
         }
         else
         {
@@ -72,34 +78,31 @@ public class HoverController : MonoBehaviour
         }
     }
 
-    void heightUp()
+    private void HeightUp()
     {
-        foreach (Transform raycastHelper in RaycastHelpers)
+        foreach (var raycastHelper in RaycastHelpers)
         {
-            Ray ray = new Ray(raycastHelper.position, -raycastHelper.up);
-            RaycastHit hitInfo;
+            var ray = new Ray(raycastHelper.position, -raycastHelper.up);
 
-            if (Physics.Raycast(ray, out hitInfo, HeightFromGround, GroundLayer))
+            if (!Physics.Raycast(ray, out var hitInfo, HeightFromGround, GroundLayer)) continue;
+            var distance = Vector3.Distance(raycastHelper.position, hitInfo.point);
+
+            if (distance < HeightFromGround)
             {
-                float distance = Vector3.Distance(raycastHelper.position, hitInfo.point);
-
-                if (distance < HeightFromGround)
-                {
-                    hoverBody.AddForceAtPosition(raycastHelper.up * GoUpForce * (1f - distance / HeightFromGround),
-                        raycastHelper.position, ForceMode.Force);
-                }
+                hoverBody.AddForceAtPosition(raycastHelper.up * GoUpForce * (1f - distance / HeightFromGround),
+                    raycastHelper.position, ForceMode.Force);
             }
         }
     }
 
-    private void InputMovement(float forward, float side, Vector3 targetVector)
+    private void InputMovement(float forward, float side)
     {
         hoverBody.AddRelativeTorque(
             Vector3.up * (RotationTorque * side * (forward == 0 ? 1f : Mathf.Sign(forward))), ForceMode.Force);
         if (grounded || !BlockAirControl)
         {
             //hoverBody.AddRelativeForce(Vector3.forward * forward * ForwardForce, ForceMode.Force);
-            hoverBody.AddRelativeForce(Vector3.forward * forward * ForwardForce, ForceMode.Force);
+            hoverBody.AddRelativeForce(Vector3.forward * forward * turboFactor, ForceMode.Force);
             
         }
     }
@@ -120,8 +123,43 @@ public class HoverController : MonoBehaviour
         }
         
         //to3 = Vector3.Scale(transform.eulerAngles, new Vector3(0,1,1));
-        
-        
-        
+    }
+    
+    public void Move(InputAction.CallbackContext context){
+        inputX = context.ReadValue<Vector2>().x;
+        inputY = context.ReadValue<Vector2>().y;
+    }
+
+    private void Turbo(bool turbo)
+    {
+        switch (turbo)
+        {
+            case true:
+                turboFactor *= TurboForce;
+                break;
+            case false:
+                turboFactor = ForwardForce;
+                break;
+        }
+    }
+
+    public void HandBreak(InputAction.CallbackContext context)
+    {
+        if (context.performed && grounded)
+        {
+            driff = true;
+        }else if (context.canceled && grounded)
+        {
+            driff = false;
+        }
+    }
+
+    public void TurboBoost(InputAction.CallbackContext context)
+    {
+        if (context.started) {
+            Turbo(true);
+        }else if (context.canceled) {
+            Turbo(false);
+        }
     }
 }

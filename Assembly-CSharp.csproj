@@ -53,14 +53,12 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CollisionEffects.cs" />
-     <Compile Include="Assets\Scripts\HoverCarController.cs" />
+     <Compile Include="Assets\Input\ControlsInput.cs" />
      <Compile Include="Assets\Prefabs\HoverController\Scripts\CameraBehaviour.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\HoverController.cs" />
      <Compile Include="Assets\Scripts\WheelController.cs" />
-     <Compile Include="Assets\Scripts\InputHandler.cs" />
      <Compile Include="Assets\Scripts\DestroyAfter.cs" />
-     <Compile Include="Assets\Scripts\TopDownCharacterMover.cs" />
      <Compile Include="Assets\Prefabs\Simple Helvetica\SimpleHelvetica.cs" />
      <Compile Include="Assets\Scripts\SpawnerController.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -680,6 +678,9 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.InputSystem">
+ <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/Unity.InputSystem.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
  <HintPath>E:/Development/UnityProjects/Portfolio/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
