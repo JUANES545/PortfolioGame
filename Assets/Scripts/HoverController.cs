@@ -5,36 +5,39 @@ using UnityEngine.InputSystem;
 
 public class HoverController : MonoBehaviour
 {
-    public float GoUpForce = 12500f;
-    public float ForwardForce = 20000f;
-    public float RotationTorque = 10000f;
-    public Transform[] RaycastHelpers;
-    public Transform CenterRaycastHelper;
-    public float HeightFromGround = 2f;
-    public float GroundedThreshold = 4f;
-    public bool BlockAirControl;
-
-    public LayerMask GroundLayer;
-
-    Rigidbody hoverBody;
-
-    private float horizontal;
-    private float vertical;
+    [SerializeField] private float GoUpForce = 12500f;
+    [SerializeField] private float ForwardForce = 20000f;
+    [SerializeField] private float RotationTorque = 10000f;
+    [SerializeField] private Transform[] RaycastHelpers;
+    [SerializeField] private Transform CenterRaycastHelper;
+    [SerializeField] private float HeightFromGround = 2f;
+    [SerializeField] private float GroundedThreshold = 4f;
+    [SerializeField] private bool BlockAirControl;
+    [SerializeField] private LayerMask GroundLayer;
+    [SerializeField] private float jumpForce = 20000f;
+    [SerializeField] private float JumpRateTime = 0.4f;
+    [SerializeField] private const float TurboForce = 2.5f;
+    [SerializeField] private Vector3 to3;
+    /*
     [SerializeField] private float eulerAngX;
     [SerializeField] private float eulerAngY;
     [SerializeField] private float eulerAngZ;
+    */
     [SerializeField] private bool saveZone;
-    [SerializeField] private bool handBreak;
-    [SerializeField] private Vector3 to3;
+    [SerializeField] private bool handBreak;    
     
+    private Rigidbody hoverBody;
+    private bool jumpLoaded = true;
+    private float horizontal;
+    private float vertical;
     private float inputX;
     private float inputY;
     
-    [SerializeField] private const float TurboForce = 2.5f;
+    
     public float turboFactor;
 
     bool grounded = false;
-
+    
     private void Start()
     {
         Application.targetFrameRate = 60;
@@ -161,5 +164,21 @@ public class HoverController : MonoBehaviour
         }else if (context.canceled) {
             Turbo(false);
         }
+    }
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (context.performed && jumpLoaded)
+        {
+            jumpLoaded = false;
+            hoverBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            StartCoroutine(ReloadJump());
+        }
+    }
+    
+    private IEnumerator ReloadJump()
+    {
+        yield return new WaitForSeconds(JumpRateTime);
+        jumpLoaded = true;
     }
 }

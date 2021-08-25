@@ -41,6 +41,14 @@ public class @ControlsInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""cfd07de2-fa99-43b8-a28b-1823792b22a9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -184,6 +192,28 @@ public class @ControlsInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Turbo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe7da493-0bdd-41ac-a8c9-14605d0c4f84"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse;Gamepad"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b1d4b0f-f031-4d54-b52d-d9ce5f745500"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -775,6 +805,7 @@ public class @ControlsInput : IInputActionCollection, IDisposable
         m_InGame_Move = m_InGame.FindAction("Move", throwIfNotFound: true);
         m_InGame_handBreak = m_InGame.FindAction("handBreak", throwIfNotFound: true);
         m_InGame_Turbo = m_InGame.FindAction("Turbo", throwIfNotFound: true);
+        m_InGame_Jump = m_InGame.FindAction("Jump", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -839,6 +870,7 @@ public class @ControlsInput : IInputActionCollection, IDisposable
     private readonly InputAction m_InGame_Move;
     private readonly InputAction m_InGame_handBreak;
     private readonly InputAction m_InGame_Turbo;
+    private readonly InputAction m_InGame_Jump;
     public struct InGameActions
     {
         private @ControlsInput m_Wrapper;
@@ -846,6 +878,7 @@ public class @ControlsInput : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_InGame_Move;
         public InputAction @handBreak => m_Wrapper.m_InGame_handBreak;
         public InputAction @Turbo => m_Wrapper.m_InGame_Turbo;
+        public InputAction @Jump => m_Wrapper.m_InGame_Jump;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -864,6 +897,9 @@ public class @ControlsInput : IInputActionCollection, IDisposable
                 @Turbo.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnTurbo;
                 @Turbo.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnTurbo;
                 @Turbo.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnTurbo;
+                @Jump.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnJump;
             }
             m_Wrapper.m_InGameActionsCallbackInterface = instance;
             if (instance != null)
@@ -877,6 +913,9 @@ public class @ControlsInput : IInputActionCollection, IDisposable
                 @Turbo.started += instance.OnTurbo;
                 @Turbo.performed += instance.OnTurbo;
                 @Turbo.canceled += instance.OnTurbo;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
             }
         }
     }
@@ -1036,6 +1075,7 @@ public class @ControlsInput : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnHandBreak(InputAction.CallbackContext context);
         void OnTurbo(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
