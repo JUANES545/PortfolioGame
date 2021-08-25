@@ -168,12 +168,10 @@ public class HoverController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && jumpLoaded)
-        {
-            jumpLoaded = false;
-            hoverBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            StartCoroutine(ReloadJump());
-        }
+        if (!context.performed || !jumpLoaded) return;
+        jumpLoaded = false;
+        hoverBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        StartCoroutine(ReloadJump());
     }
     
     private IEnumerator ReloadJump()
