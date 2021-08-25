@@ -37,6 +37,7 @@ public class HoverController : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
         hoverBody = GetComponent<Rigidbody>();
         turboFactor = ForwardForce;
     }
