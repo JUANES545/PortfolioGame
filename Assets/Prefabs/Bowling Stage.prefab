@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3041712701150906350}
   - component: {fileID: 3041712701150906351}
   - component: {fileID: 3041712701150906344}
-  - component: {fileID: 3041712701150906345}
+  - component: {fileID: 8503975847582522733}
   m_Layer: 0
-  m_Name: Kegel (1)
+  m_Name: Kegel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,16 +91,16 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3041712701150906349}
   serializedVersion: 2
-  m_Mass: 4
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
---- !u!136 &3041712701150906345
-CapsuleCollider:
+  m_CollisionDetection: 0
+--- !u!64 &8503975847582522733
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -109,10 +109,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.81029963
-  m_Height: 5.5012693
-  m_Direction: 1
-  m_Center: {x: -0.0000036656857, y: 2.7506347, z: 0.0000009536743}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 6a14dc0db365944f182482aba11ad830, type: 3}
 --- !u!1 &3041712701222833699
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,9 +125,9 @@ GameObject:
   - component: {fileID: 3041712701222833724}
   - component: {fileID: 3041712701222833725}
   - component: {fileID: 3041712701222833726}
-  - component: {fileID: 3041712701222833727}
+  - component: {fileID: 4703600314267026507}
   m_Layer: 0
-  m_Name: Kegel (1)
+  m_Name: Kegel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,16 +204,16 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3041712701222833699}
   serializedVersion: 2
-  m_Mass: 4
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
---- !u!136 &3041712701222833727
-CapsuleCollider:
+  m_CollisionDetection: 0
+--- !u!64 &4703600314267026507
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -222,10 +222,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.81029963
-  m_Height: 5.5012693
-  m_Direction: 1
-  m_Center: {x: 0.00000014901161, y: 2.7506347, z: 2.2903633e-16}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 6a14dc0db365944f182482aba11ad830, type: 3}
 --- !u!1 &3041712701496503522
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,9 +238,9 @@ GameObject:
   - component: {fileID: 3041712701496503551}
   - component: {fileID: 3041712701496503548}
   - component: {fileID: 3041712701496503545}
-  - component: {fileID: 3041712701496503550}
+  - component: {fileID: 5428921097656152332}
   m_Layer: 0
-  m_Name: Kegel (1)
+  m_Name: Kegel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317,16 +317,16 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3041712701496503522}
   serializedVersion: 2
-  m_Mass: 4
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
---- !u!136 &3041712701496503550
-CapsuleCollider:
+  m_CollisionDetection: 0
+--- !u!64 &5428921097656152332
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -335,10 +335,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.81029963
-  m_Height: 5.5012693
-  m_Direction: 1
-  m_Center: {x: 0.00000014901161, y: 2.7506347, z: -0.0000009536743}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 6a14dc0db365944f182482aba11ad830, type: 3}
 --- !u!1 &3041712701950702480
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,9 +351,9 @@ GameObject:
   - component: {fileID: 3041712701950702572}
   - component: {fileID: 3041712701950702573}
   - component: {fileID: 3041712701950702482}
-  - component: {fileID: 3041712701950702483}
+  - component: {fileID: 428134799}
   m_Layer: 0
-  m_Name: Ball (1)
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,16 +430,16 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3041712701950702480}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
---- !u!135 &3041712701950702483
-SphereCollider:
+  m_CollisionDetection: 0
+--- !u!64 &428134799
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -448,9 +448,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.5000002
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 6a14dc0db365944f182482aba11ad830, type: 3}
 --- !u!1 &3041712702298619266
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,9 +464,9 @@ GameObject:
   - component: {fileID: 3041712702298619289}
   - component: {fileID: 3041712702298619294}
   - component: {fileID: 3041712702298619295}
-  - component: {fileID: 3041712702298619292}
+  - component: {fileID: 5248206009626861773}
   m_Layer: 0
-  m_Name: Kegel (1)
+  m_Name: Kegel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -542,16 +543,16 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3041712702298619266}
   serializedVersion: 2
-  m_Mass: 4
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
---- !u!136 &3041712702298619292
-CapsuleCollider:
+  m_CollisionDetection: 0
+--- !u!64 &5248206009626861773
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -560,10 +561,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.81029963
-  m_Height: 5.5012693
-  m_Direction: 1
-  m_Center: {x: 0.000003963709, y: 2.7506347, z: -0.0000009536743}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 6a14dc0db365944f182482aba11ad830, type: 3}
 --- !u!1 &3041712702336444928
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,9 +577,9 @@ GameObject:
   - component: {fileID: 3041712702336444959}
   - component: {fileID: 3041712702336444956}
   - component: {fileID: 3041712702336444957}
-  - component: {fileID: 3041712702336444930}
+  - component: {fileID: 7249764187240020414}
   m_Layer: 0
-  m_Name: Kegel (1)
+  m_Name: Kegel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -655,16 +656,16 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3041712702336444928}
   serializedVersion: 2
-  m_Mass: 4
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
---- !u!136 &3041712702336444930
-CapsuleCollider:
+  m_CollisionDetection: 0
+--- !u!64 &7249764187240020414
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -673,10 +674,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.81029963
-  m_Height: 5.5012693
-  m_Direction: 1
-  m_Center: {x: 0.00000014901161, y: 2.7506347, z: 2.2903633e-16}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 6a14dc0db365944f182482aba11ad830, type: 3}
 --- !u!1 &3041712702540332447
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,9 +690,9 @@ GameObject:
   - component: {fileID: 3041712702540332442}
   - component: {fileID: 3041712702540332443}
   - component: {fileID: 3041712702540332440}
-  - component: {fileID: 3041712702540332441}
+  - component: {fileID: 5391722813130443147}
   m_Layer: 0
-  m_Name: Kegel (1)
+  m_Name: Kegel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -768,16 +769,16 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3041712702540332447}
   serializedVersion: 2
-  m_Mass: 4
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
---- !u!136 &3041712702540332441
-CapsuleCollider:
+  m_CollisionDetection: 0
+--- !u!64 &5391722813130443147
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -786,10 +787,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.81029963
-  m_Height: 5.5012693
-  m_Direction: 1
-  m_Center: {x: 0.00000014901161, y: 2.7506347, z: 2.2903633e-16}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 6a14dc0db365944f182482aba11ad830, type: 3}
 --- !u!1 &3041712702732231390
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,9 +803,9 @@ GameObject:
   - component: {fileID: 3041712702732231381}
   - component: {fileID: 3041712702732231386}
   - component: {fileID: 3041712702732231387}
-  - component: {fileID: 3041712702732231384}
+  - component: {fileID: 5023929828420693861}
   m_Layer: 0
-  m_Name: Kegel (1)
+  m_Name: Kegel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -881,16 +882,16 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3041712702732231390}
   serializedVersion: 2
-  m_Mass: 4
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
---- !u!136 &3041712702732231384
-CapsuleCollider:
+  m_CollisionDetection: 0
+--- !u!64 &5023929828420693861
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -899,10 +900,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.81029963
-  m_Height: 5.5012693
-  m_Direction: 1
-  m_Center: {x: 0.00000014901161, y: 2.7506347, z: 2.2903633e-16}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 6a14dc0db365944f182482aba11ad830, type: 3}
 --- !u!1 &3041712702839744322
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,9 +955,9 @@ GameObject:
   - component: {fileID: 3041712703204583049}
   - component: {fileID: 3041712703204583054}
   - component: {fileID: 3041712703204583055}
-  - component: {fileID: 3041712703204583052}
+  - component: {fileID: 4500466376386295039}
   m_Layer: 0
-  m_Name: Kegel (1)
+  m_Name: Kegel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1033,16 +1034,16 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3041712703204583090}
   serializedVersion: 2
-  m_Mass: 4
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
---- !u!136 &3041712703204583052
-CapsuleCollider:
+  m_CollisionDetection: 0
+--- !u!64 &4500466376386295039
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1051,7 +1052,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.81029963
-  m_Height: 5.5012693
-  m_Direction: 1
-  m_Center: {x: 0.00000014901161, y: 2.7506347, z: -0.0000009536743}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 6a14dc0db365944f182482aba11ad830, type: 3}
