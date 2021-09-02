@@ -15,17 +15,9 @@ public class HoverController : MonoBehaviour
     [SerializeField] private bool BlockAirControl;
     [SerializeField] private LayerMask GroundLayer;
     [SerializeField] private float jumpForce = 20000f;
-    [SerializeField] private float JumpRateTime = 0.4f;
-    [SerializeField] private const float TurboForce = 2.5f;
-    [SerializeField] private Vector3 to3;
-    /*
-    [SerializeField] private float eulerAngX;
-    [SerializeField] private float eulerAngY;
-    [SerializeField] private float eulerAngZ;
-    */
-    [SerializeField] private bool saveZone;
-    [SerializeField] private bool handBreak;    
-    
+    [SerializeField] private float JumpRateTime = 0.4f; 
+    private const float TurboForce = 2.5f;
+
     private Rigidbody hoverBody;
     private bool jumpLoaded = true;
     private float horizontal;
@@ -36,7 +28,7 @@ public class HoverController : MonoBehaviour
     
     public float turboFactor;
 
-    bool grounded = false;
+    private bool _grounded;
     
     private void Start()
     {
@@ -54,15 +46,7 @@ public class HoverController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        /*     Experimental
-         var targetVector = new Vector3(horizontal, 0, vertical);
-        AlwaysDown(eulerAngX, targetVector);
-        
-        AlwaysDown(eulerAngX, eulerAngY, eulerAngZ, targetVector);
-        InputMovement(vertical, horizontal, targetVector);
-        */
         InputMovement(inputY, inputX);
-
     }
 
     private void CheckGrounded()
@@ -72,12 +56,12 @@ public class HoverController : MonoBehaviour
 
         if (Physics.Raycast(ray, out hitInfo, GroundedThreshold, GroundLayer))
         {
-            grounded = true;
+            _grounded = true;
             hoverBody.drag = 1.5f;
         }
         else
         {
-            grounded = false;
+            _grounded = false;
             hoverBody.drag = 0.2f;
         }
     }
@@ -103,31 +87,13 @@ public class HoverController : MonoBehaviour
     {
         hoverBody.AddRelativeTorque(
             Vector3.up * (RotationTorque * side * (forward == 0 ? 1f : Mathf.Sign(forward))), ForceMode.Force);
-        if (grounded || !BlockAirControl)
+        if (_grounded || !BlockAirControl)
         {
             hoverBody.AddRelativeForce(Vector3.forward * forward * turboFactor, ForceMode.Force);
             
         }
     }
 
-    private void AlwaysDown(float eulerAngX, Vector3 targetVector)
-    {
-        if (eulerAngX > 300 || eulerAngX == 0  || eulerAngX < 37)
-        {
-            saveZone = true;
-            
-        }
-        else
-        {
-            saveZone = false;
-            to3 = Vector3.Scale(transform.localEulerAngles, new Vector3(0,1,0));
-            gameObject.transform.Rotate(to3);            
-            //to3 = transform.eulerAngles = Vector3.Lerp(transform.rotation.eulerAngles, new Vector3(0, 1, 1), Time.deltaTime);
-        }
-        
-        //to3 = Vector3.Scale(transform.eulerAngles, new Vector3(0,1,1));
-    } //Experimental
-    
     public void Move(InputAction.CallbackContext context){
         inputX = context.ReadValue<Vector2>().x;
         inputY = context.ReadValue<Vector2>().y;
@@ -143,17 +109,6 @@ public class HoverController : MonoBehaviour
             case false:
                 turboFactor = ForwardForce;
                 break;
-        }
-    }
-
-    public void HandBreak(InputAction.CallbackContext context)
-    {
-        if (context.performed && grounded)
-        {
-            handBreak = true;
-        }else if (context.canceled && grounded)
-        {
-            handBreak = false;
         }
     }
 

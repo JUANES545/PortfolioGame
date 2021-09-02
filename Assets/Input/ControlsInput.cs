@@ -49,6 +49,14 @@ public class @ControlsInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Enter"",
+                    ""type"": ""Button"",
+                    ""id"": ""7c20d98d-5ae2-42ae-93d1-73ead104f638"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -164,8 +172,19 @@ public class @ControlsInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""1870f468-fc11-4650-9ef5-cb5461731cf6"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""3bddc42f-9f74-452f-baf4-d28b9bd2fe67"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -197,12 +216,12 @@ public class @ControlsInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""fe7da493-0bdd-41ac-a8c9-14605d0c4f84"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""id"": ""9cef3ea0-5e1d-4f0e-88da-79325488e26b"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Gamepad"",
-                    ""action"": ""Jump"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Turbo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -214,6 +233,50 @@ public class @ControlsInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""201329c6-499c-408b-b872-f187c79d400b"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd33d476-a633-4143-97e1-3b9282c6282b"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8826a326-d7cd-4cd4-8b12-268b2320674d"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fdd53344-3862-4eae-9562-5a22d0ccaae2"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Enter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -806,6 +869,7 @@ public class @ControlsInput : IInputActionCollection, IDisposable
         m_InGame_handBreak = m_InGame.FindAction("handBreak", throwIfNotFound: true);
         m_InGame_Turbo = m_InGame.FindAction("Turbo", throwIfNotFound: true);
         m_InGame_Jump = m_InGame.FindAction("Jump", throwIfNotFound: true);
+        m_InGame_Enter = m_InGame.FindAction("Enter", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -871,6 +935,7 @@ public class @ControlsInput : IInputActionCollection, IDisposable
     private readonly InputAction m_InGame_handBreak;
     private readonly InputAction m_InGame_Turbo;
     private readonly InputAction m_InGame_Jump;
+    private readonly InputAction m_InGame_Enter;
     public struct InGameActions
     {
         private @ControlsInput m_Wrapper;
@@ -879,6 +944,7 @@ public class @ControlsInput : IInputActionCollection, IDisposable
         public InputAction @handBreak => m_Wrapper.m_InGame_handBreak;
         public InputAction @Turbo => m_Wrapper.m_InGame_Turbo;
         public InputAction @Jump => m_Wrapper.m_InGame_Jump;
+        public InputAction @Enter => m_Wrapper.m_InGame_Enter;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -900,6 +966,9 @@ public class @ControlsInput : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnJump;
+                @Enter.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnEnter;
+                @Enter.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnEnter;
+                @Enter.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnEnter;
             }
             m_Wrapper.m_InGameActionsCallbackInterface = instance;
             if (instance != null)
@@ -916,6 +985,9 @@ public class @ControlsInput : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Enter.started += instance.OnEnter;
+                @Enter.performed += instance.OnEnter;
+                @Enter.canceled += instance.OnEnter;
             }
         }
     }
@@ -1076,6 +1148,7 @@ public class @ControlsInput : IInputActionCollection, IDisposable
         void OnHandBreak(InputAction.CallbackContext context);
         void OnTurbo(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnEnter(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

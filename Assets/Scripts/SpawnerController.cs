@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SpawnerController : MonoBehaviour
 {
@@ -12,22 +13,10 @@ public class SpawnerController : MonoBehaviour
     
     [SerializeField] private Animator _animator;
     private static readonly int Platform = Animator.StringToHash("Platform");
-
-
-    private void Awake()
-    {
-        //_animator = GetComponent<Animator>();
-    }
-
+    
     private void Start()
     {
         _animator.SetBool(Platform, false);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Return))
-            ReSpawnPrefab();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,5 +40,11 @@ public class SpawnerController : MonoBehaviour
         prefabsToClone = Instantiate(prefabsToSpawn, spawnerLocations.transform.position,
             Quaternion.Euler(0, 0, 0));
     }
-    
+
+    public void Enter(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        ReSpawnPrefab();
+    }
+
 }
